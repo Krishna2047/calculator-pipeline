@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = "yourdockerhubusername/calculator-app"
+        IMAGE_NAME = "krishna20047/calculator-app"
     }
 
     stages {
