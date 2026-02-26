@@ -13,21 +13,15 @@ pipeline {
             }
         }
 
-        stage('Build') {
-            steps {
-                bat 'pip install -r requirements.txt'
-            }
-        }
-
-        stage('Test') {
-            steps {
-                bat 'pytest'
-            }
-        }
-
         stage('Docker Build') {
             steps {
                 bat 'docker build -t %IMAGE_NAME%:%BUILD_NUMBER% .'
+            }
+        }
+
+        stage('Test Inside Container') {
+            steps {
+                bat 'docker run %IMAGE_NAME%:%BUILD_NUMBER%'
             }
         }
 
